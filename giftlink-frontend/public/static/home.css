@@ -1,103 +1,83 @@
-/* Task 1: Style the body */
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #ffffff;
-    background-color: #064e3b;
-}
+	body {
+		font-family: 'Montserrat', sans-serif;
+		margin: 0;
+		padding: 0;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		background-color: #f4f4f4; /* Updated background color */
+	}
 
-/* Task 2: Create a pseudo-element for the background and blur */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background:
-        url("background.jpg") center / cover no-repeat,
-        linear-gradient(135deg, #064e3b 0%, #059669 60%, #34d399 100%);
-    filter: blur(6px);
-    transform: scale(1.05); /* hides the soft edges the blur creates */
-}
+	/* Create a pseudo-element for the background and blur */
+	body::before {
+		content: '';
+		position: fixed; /* Fixed position to cover the entire viewport */
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: url('/static/background-colors.jpg') no-repeat center center;
+		background-size: cover;
+		filter: blur(8px); /* Slightly reduced blur effect */
+		z-index: -1; /* Place it behind the content */
+	}
 
-/* Task 3: Style the content area */
-.content {
-    width: 100%;
-    max-width: 640px;
-    padding: 3rem 2rem;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(4px);
-}
+	.content {
+		position: relative;
+		font-weight: 600;
+		z-index: 2; /* Higher z-index to ensure content is above the blurred background */
+		text-align: center;
+		color: #1a1a1a; /* Updated text color for better readability */
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 20px;
+		background: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+		border-radius: 10px; /* Rounded corners for the content area */
+	}
 
-.gift-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #6ee7b7;
-}
+	h1, h2 {
+		font-size: 4rem; /* Large font size for main heading */
+		color: #333; /* Darker text color for headings */
+		margin-bottom: 0.5em;
 
-/* Task 4: Add styles for headings, paragraphs, and buttons */
-h1, h2, .lead, .btn-primary {
-    font-family: inherit;
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
+		font-weight: 700;
+	}
 
-h1 {
-    margin: 0 0 1rem;
-    font-size: clamp(2rem, 6vw, 3.25rem);
-    font-weight: 800;
-    line-height: 1.15;
-}
+	.lead {
+		font-size: 1.5rem; /* Large font size for the quote */
+		color: #333; /* Dark text color for better readability */
+		margin-bottom: 2rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for legibility */
+	}
 
-h2 {
-    margin: 0 0 1.5rem;
-    font-size: clamp(1.05rem, 3vw, 1.4rem);
-    font-weight: 400;
-    line-height: 1.5;
-    color: #d1fae5;
-}
+	.btn-primary {
+		background-color: #1E90FF; /* Vibrant color for the button */
+		color: #FFFFFF; /* White text for contrast */
+		border: none;
+		padding: 1rem 2.5rem; /* Generous padding for a larger button */
+		border-radius: 30px; /* Rounded, but not fully pill-shaped */
+		font-size: 1.2rem; /* Larger font size for readability */
+		font-weight: 700; /* Bold font for the button text */
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+		transition: background-color 0.3s, transform 0.1s;
+	}
 
-.lead {
-    margin: 0 0 2rem;
-    font-size: 1.15rem;
-    font-style: italic;
-    line-height: 1.6;
-}
+	.btn-primary:hover,
+	.btn-primary:focus {
+		background-color: #f50057; /* A lighter shade for interaction feedback */
+		transform: scale(1.05); /* Slightly enlarge button on hover/focus */
+	}
 
-.quote-author {
-    display: block;
-    margin-top: 0.4rem;
-    font-size: 0.9rem;
-    font-style: normal;
-    color: #a7f3d0;
-}
-
-.btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.9rem 2.2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-decoration: none;
-    background: #10b981;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    text-shadow: none;
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.btn-primary:hover {
-    background: #059669;
-    transform: translateY(-2px);
-}
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 3rem; /* Smaller font size for headings on mobile */
+		}
+		h2 {
+			font-size: 2.5rem; /* Smaller font size for subheadings on mobile */
+		}
+		.lead {
+			font-size: 1.25rem; /* Smaller font size for text on mobile */
+		}
+	}
